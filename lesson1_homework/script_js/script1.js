@@ -50,7 +50,7 @@ boolean2 = false;
 
 
 let array = [string1, string2, srting3, string4, integer1, integer2, integer3, integer4, integer5, double1, double2, boolean1, boolean2];
-for (let i = 0; i < 13; i++) {
+for (let i = 0; i < array.length; i++) {
     alert(array[i]);
     console.log(array[i]);
     document.write(i + " элемент массива: " + array[i] + "<br />");
@@ -79,7 +79,7 @@ do {
     document.write(j + " элемент массива: " + array2[j] + "<br />");
     j++;
 }
-while (j < 13);
+while (j < array2.length);
 //часть 3
 let first_name, middle_name, last_name, person;
 first_name = `Янковой`;
