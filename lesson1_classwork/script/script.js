@@ -36,11 +36,6 @@ class book {
         this.countPages = countPages;
         this.genre = genre;
     }
-
-    // constructor(nameBook, countPages, genre) {
-    //     this(nameBook, countPages, genre, null);
-    // }
-
 }
 
 book1 = {nameBook: "Таинственный остров", countPages: 400, genre: "Фантастика"};
