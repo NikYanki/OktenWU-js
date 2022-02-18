@@ -1,60 +1,77 @@
-let eventDate = new Date();
-let hours = eventDate.getHours();
-let minutes = eventDate.getMinutes();
-let seconds = eventDate.getSeconds();
-let todayDate = new Date();
-let eventYear = todayDate.getFullYear();
-let eventMonth = todayDate.getMonth() + 1;
-let eventDay = todayDate.getDate();
-
-function userCard(number) {
+function userCard() {
     let card = {
         balance: 100,
         transactionLimit: 100,
         historyLogs: [],
-        key: number,
+        key: null
     }
     return {
         getCardOptions: function () {
             return card;
         },
-        putCredits: function (cash1) {
-            card.balance = cash1;
+        putCredits: function (cash) {
+            card.balance += cash;
+            let eventDate = new Date();
+            let hours = eventDate.getHours();
+            let minutes = eventDate.getMinutes();
+            let seconds = eventDate.getSeconds();
+            let todayDate = new Date();
+            let eventYear = todayDate.getFullYear();
+            let eventMonth = todayDate.getMonth() + 1;
+            let eventDay = todayDate.getDate();
             let transaction = {
                 operationType: 'Received credits',
-                credits: cash1,
+                credits: cash,
                 operationTime: `${eventDay}/${eventMonth}/${eventYear}, ${hours}:${minutes}:${seconds}`
             }
-            card.historyLogs.splice(0, 0, transaction);
+            card.historyLogs.push(transaction);
         },
-        takeCredits: function (cash2) {
-            if (card.balance >= cash2) {
-                card.balance = card.balance - cash2;
+        takeCredits: function (cash) {
+            if (card.balance >= cash) {
+                card.balance = card.balance - cash;
+                let eventDate = new Date();
+                let hours = eventDate.getHours();
+                let minutes = eventDate.getMinutes();
+                let seconds = eventDate.getSeconds();
+                let todayDate = new Date();
+                let eventYear = todayDate.getFullYear();
+                let eventMonth = todayDate.getMonth() + 1;
+                let eventDay = todayDate.getDate();
                 let transaction = {
                     operationType: 'Withdrawal of credits',
-                    credits: cash2,
+                    credits: cash,
                     operationTime: `${eventDay}/${eventMonth}/${eventYear}, ${hours}:${minutes}:${seconds}`
                 }
-                card.historyLogs.splice(0, 0, transaction);
+                card.historyLogs.push(transaction);
             } else {
-                console.error(card);
+                console.log("eror");
             }
 
         },
-        setTransactionLimit: function (cash3) {
-            card.transactionLimit = cash3;
+        setTransactionLimit: function (cash) {
+            card.transactionLimit = cash;
+            let eventDate = new Date();
+            let hours = eventDate.getHours();
+            let minutes = eventDate.getMinutes();
+            let seconds = eventDate.getSeconds();
+            let todayDate = new Date();
+            let eventYear = todayDate.getFullYear();
+            let eventMonth = todayDate.getMonth() + 1;
+            let eventDay = todayDate.getDate();
             let transaction = {
                 operationType: 'Transaction Limit change',
-                credits: cash3,
+                credits: cash,
                 operationTime: `${eventDay}/${eventMonth}/${eventYear}, ${hours}:${minutes}:${seconds}`
             }
-            card.historyLogs.splice(0, 0, transaction);
+            card.historyLogs.push(transaction);
         },
         transferCredits: function (credits, cards) {
-            cards.getCardOptions().balance += credits;
-            credits = credits + (credits * 0.005);
-            card.balance -= credits;
-        },
+            if (card.balance >= credits + (credits * 0.005)) {
+                cards.getCardOptions().balance += credits;
+                credits = credits + (credits * 0.005);
+                card.balance -= credits;
+            }
+        }
 
     }
 
@@ -67,12 +84,12 @@ class UserAccount {
     }
 
     addCard() {
-        const card = userCard().getCardOptions();
+        let card = userCard().getCardOptions();
         this.cards.push(card);
     }
 
     getCardByKey(number) {
-        const card = userCard(number);
+        let card = userCard(number);
         card.getCardOptions().key = number;
         return card;
     }
