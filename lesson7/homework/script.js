@@ -39,13 +39,6 @@ console.log(Users.sort((a, b) => (a.id - b.id)));
 // - створити класс для об'єктів Client з полями id, name, surname , email, phone, order (поле є масивом зі списком товарів)
 // створити пустий масив, наповнити його 10 об'єктами Client
 class Client {
-    id;
-    name;
-    surname;
-    email;
-    phone;
-    order;
-
     constructor(id, name, surname, email, phone, order) {
         this.id = id;
         this.name = name;

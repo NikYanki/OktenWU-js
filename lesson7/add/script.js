@@ -26,10 +26,6 @@ let obj = {
 }
 
 class Company {
-    name;
-    catchPhrase;
-    bs;
-
     constructor(name, catchPhrase, bs) {
         this.name = name;
         this.catchPhrase = catchPhrase;
@@ -38,9 +34,6 @@ class Company {
 }
 
 class Geo {
-    lat;
-    lng;
-
     constructor(lat, lng) {
         this.lat = lat;
         this.lng = lng;
@@ -48,12 +41,6 @@ class Geo {
 }
 
 class Adress {
-    street;
-    suite;
-    city;
-    zipcode;
-    geo;
-
     constructor(street, suite, city, zipcode, geo,) {
         this.street = street;
         this.suite = suite;
@@ -64,15 +51,6 @@ class Adress {
 }
 
 class User {
-    id;
-    name;
-    username;
-    email;
-    address;
-    phone;
-    website;
-    company;
-
     constructor(id, name, username, email, address, phone, website, company,) {
         this.id = id;
         this.name = name;

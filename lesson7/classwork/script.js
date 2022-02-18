@@ -50,34 +50,30 @@ car1.showDrive();
 // -- addDriver (driver) - приймає об'єкт який "водій" з довільним набором полів, і додає його в поточний об'єкт car
 //
 class Car1 {
-    brend
-    model
-    maxSpeed
-    vEngine
-
     constructor(brend, model, maxSpeed, vEngine) {
         this.brend = brend;
         this.model = model;
         this.maxSpeed = maxSpeed;
         this.vEngine = vEngine;
-        this.showDrive = function () {
-            console.log(`двигаемся со скоростью ${this.maxSpeed} в час`);
-        }
-        this.showInfo = function () {
-            for (const key in this) {
-                if (typeof this[key] !== 'function') console.log(`${key} - ${this[key]}`)
-            }
-        };
+    }
 
-        this.increaseMaxSpeed = function (newSpeed) {
-            this.maxSpeed = newSpeed;
+    showDrive = function () {
+        console.log(`двигаемся со скоростью ${this.maxSpeed} в час`);
+    }
+    showInfo = function () {
+        for (const key in this) {
+            if (typeof this[key] !== 'function') console.log(`${key} - ${this[key]}`)
         }
-        this.changeYear = function (newValue) {
-            this.yearManufact = newValue;
-        }
-        this.addDriver = function (driver) {
-            this.driver = driver
-        }
+    };
+
+    increaseMaxSpeed = function (newSpeed) {
+        this.maxSpeed = newSpeed;
+    }
+    changeYear = function (newValue) {
+        this.yearManufact = newValue;
+    }
+    addDriver = function (driver) {
+        this.driver = driver
     }
 }
 
@@ -107,10 +103,6 @@ class Popelushka {
 }
 
 class Prince {
-    name;
-    age;
-    ShoozSize;
-
     constructor(name, age, ShoozSize) {
         this.name = name;
         this.age = age;
@@ -118,16 +110,16 @@ class Prince {
     }
 }
 
-P1 = new Popelushka("Pamela", 26, 32);
-P2 = new Popelushka("Silvia", 26, 33);
-P3 = new Popelushka("Roza", 26, 34);
-P4 = new Popelushka("Agness", 26, 35);
-P5 = new Popelushka("Alexandra", 26, 36);
-P6 = new Popelushka("Jeniffer", 26, 37);
-P7 = new Popelushka("Eva", 26, 38);
-P8 = new Popelushka("Margaret", 26, 39);
-P9 = new Popelushka("Katrina", 26, 31);
-P10 = new Popelushka("Olvia", 26, 33);
+p1 = new Popelushka("Pamela", 26, 32);
+p2 = new Popelushka("Silvia", 26, 33);
+p3 = new Popelushka("Roza", 26, 34);
+p4 = new Popelushka("Agness", 26, 35);
+p5 = new Popelushka("Alexandra", 26, 36);
+p6 = new Popelushka("Jeniffer", 26, 37);
+p7 = new Popelushka("Eva", 26, 38);
+p8 = new Popelushka("Margaret", 26, 39);
+p9 = new Popelushka("Katrina", 26, 31);
+p10 = new Popelushka("Olvia", 26, 33);
 let list = []
 list.push(P1);
 list.push(P2);
