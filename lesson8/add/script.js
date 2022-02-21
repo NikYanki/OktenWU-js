@@ -6,9 +6,15 @@ let pusherClassNameToArr = (element) => {
 
     let children = element.children;
     for (let child of children) {
-        arr.push(child.className);
+        let a = (child.className.split(' '));
+
+        for (let aElement of a) {
+            arr.push(aElement)
+        }
+
         pusherClassNameToArr(child)
     }
 }
 pusherClassNameToArr(document)
-console.log(arr.filter(value => value !== ''))
+arr = arr.filter(value => value !== '')
+console.log(arr)
