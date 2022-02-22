@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+<form>
+    <input name="login" type="text">
+    <input name="password" type="text">
+    <button> sign in</button>
+</form>
+<script>
+    // let form =document.forms[0];
+    // form.onsubmit = function (e){
+    //     e.preventDefault()//данним витразом ми заборонили перезавантаження
+    //     console.log('submit')
+    // }
+
+
+    let users = [];
+    let form = document.forms[0];
+    form.onsubmit = function (e) {
+        e.preventDefault();
+        users.push({login: e.target.login.value, password: e.target.password.value});
+        console.log(users);
+    };
+
+    let inputLogin = form.login;
+    inputLogin.addEventListener('input', (e) => {
+        let yourInput = e.target;
+        let dataFromInput = yourInput.value;
+        let convertDataToLowerCase = dataFromInput.toLowerCase();
+        if (convertDataToLowerCase.includes('fuck')) {
+            alert('atata');
+        }
+
+    })
+</script>
+</body>
+</html>

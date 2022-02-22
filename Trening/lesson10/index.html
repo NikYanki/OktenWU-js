@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+<!--<h1 id="txt"></h1>-->
+<button id="btn1">clic me</button>
+<script>
+    // let btn1 = document.getElementById('btn1');
+    // btn1.onclick=function (){
+    //   console.log('try again')
+    // }
+
+
+    // let btn1 = document.getElementById('btn1');
+    // btn1.addEventListener('click', function (){
+    //   console.log('first clic')
+    // });
+    // btn1.addEventListener('click', function (){
+    //   console.log('clic 2')
+    // })
+    // btn1.addEventListener('click', function (e){
+    //   btn1.style.background='green';
+    //   console.log(e.target)
+    // })
+    // btn1.addEventListener('mousemove', function (e){
+    //     console.log(e.x)
+    //     console.log(e.y)
+    // })
+
+
+    // let txt = document.getElementById('txt');
+    // document.onmousemove = function (e) {
+    //     txt.innerText = `x ${e.clientX} , y ${e.clientY}`
+    // }
+
+
+    let points = [];
+    document.onclick = function (e) {
+        points.push({x: e.clientX, y: e.clientY});
+    }
+    let btn1 = document.getElementById('btn1');
+    btn1.addEventListener('click', () => {
+        console.log(points)
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!--Создайте меню, которое раскрывается/сворачивается при клике:-->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+<style>
+  .list ul {
+    margin: 0;
+    list-style: none;
+    padding-left: 20px;
+    display: none;
+  }
+
+  .list .title {
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .list .title::before {
+    content: '▶ ';
+    font-size: 80%;
+    color: green;
+  }
+
+  .list.open .title::before {
+    content: '▼ ';
+  }
+
+  .list.open ul {
+    display: block;
+  }
+</style>
+<div class="list" id="candy">
+  <span class="title">Сладости (нажми меня)!</span>
+  <ul>
+    <li>Пирог</li>
+    <li>Пончик</li>
+    <li>Мед</li>
+  </ul>
+</div>
+<script>
+  var menuElements = document.getElementById('candy');
+  var title = menuElements.querySelector('.title');
+
+  title.onclick = function () {
+    menuElements.classList.toggle('open');
+  }
+</script>
+</body>
+
+</html>
