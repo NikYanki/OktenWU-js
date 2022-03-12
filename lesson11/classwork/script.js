@@ -34,5 +34,5 @@ for (let user of users) {
 }
 let a = document.createElement('a');
 a.innerText = 'favorites'
-a.setAttribute('href', '/favorites.html')
+a.setAttribute('href', './favorites.html')
 document.body.appendChild(a)
