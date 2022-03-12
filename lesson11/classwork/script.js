@@ -32,4 +32,7 @@ for (let user of users) {
         localStorage.setItem('favorites', JSON.stringify(fav))
     })
 }
-localStorage.clear()
+let a = document.createElement('a');
+a.innerText = 'favorites'
+a.setAttribute('href', '/favorites.html')
+document.body.appendChild(a)
