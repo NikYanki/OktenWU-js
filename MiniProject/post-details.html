@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function createElement(tagName, containerElement) {
+        const element = document.createElement(tagName);
+        containerElement.appendChild(element);
+        return element
+    }
+
+    const post = new URLSearchParams(window.location.search).get("postId")
+    const wrap = createElement('div', document.body);
+    for (const postKey in JSON.parse(post)) {
+        const p = createElement('p', wrap)
+        p.innerText = `${postKey}: ${(JSON.parse(post))[postKey]}`
+    }
+    const seeMoreBtn = createElement('button', wrap)
+    seeMoreBtn.innerText = 'see more'
+    seeMoreBtn.onclick = (e) => {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${(JSON.parse(post))['id']}/comments`).then(response => response.json())
+            .then(comments => {
+                const wrapComents = createElement('div', wrap);
+                for (const comment of comments) {
+                    const wrapComent = createElement('div', wrapComents)
+                    for (const commentKey in comment) {
+                        const p = createElement('p', wrapComent)
+                        p.innerText = `${commentKey}: ${comment[commentKey]}`
+                    }
+                }
+            })
+    }
+</script>
+</body>
+</html>

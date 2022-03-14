@@ -120,7 +120,7 @@ let atribytes2 = [
     {titleOfAttr: 'wrap', actionOfAttr: 'Tег <div> может бытьв качестве обёртки для пунктов списка определений'},
     {titleOfAttr: 'functions', actionOfAttr: 'Содержимым тега <div> может быть любой другой элемент HTML'},
 ];
-div = new Tag(title2, action2, atribytes2);
+container = new Tag(title2, action2, atribytes2);
 console.log(div)
 let title3 = '<h1>';
 let action3 = 'Тег <h1> обозначает самый важный заголовок (заголовок верхнего уровня)';

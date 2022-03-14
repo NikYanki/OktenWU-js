@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function createElement(tagName, containerElement) {
+        const element = document.createElement(tagName);
+        containerElement.appendChild(element);
+        return element
+    }
+
+    function createBtn(name, containerElement) {
+        const btn = createElement('button', containerElement)
+        btn.innerText = name;
+        return btn;
+    }
+
+    function getUserInfo(user) {
+        return `<h4>userId :${user.userId}</h4>
+                <p>id :${user.id}</p>
+                <p>title :${user.title}</p>
+                <p>body :${user.body}</p>`
+    }
+
+    const container = document.createElement('div', document.body);
+    document.body.appendChild(container)
+    fetch(`https://jsonplaceholder.typicode.com/users/${JSON.parse(localStorage.getItem('user_id'))}`).then(response => response.json())
+        .then(responses => {
+            for (let respons in responses) {
+                const innerDiv = createElement('div', container)
+                if (typeof responses[respons] !== 'object') {
+                    innerDiv.innerText = respons + " :" + JSON.stringify(responses[respons]);
+                } else {
+                    const ul = createElement('ul', innerDiv)
+                    for (const responsKey in responses[respons]) {
+                        const li = createElement('li', ul)
+                        if (typeof responses[respons][responsKey] !== 'object') {
+                            li.innerText = `${respons}-->${responsKey}: ${responses[respons][responsKey]} `
+                        } else {
+                            li.innerText = `${respons}-->${responsKey}: ${(JSON.stringify(responses[respons][responsKey])).replaceAll('{', '').replaceAll('}', '').replaceAll('"', '')} `
+                        }
+                    }
+                }
+            }
+            const postCurrentUserBtn = createBtn("post of current user", container)
+            postCurrentUserBtn.addEventListener('click', (e) => {
+                fetch(`https://jsonplaceholder.typicode.com/users/${JSON.parse(localStorage.getItem('user_id'))}/posts`).then(response => response.json())
+                    .then(posts => {
+                        for (let post of posts) {
+                            const userContainer = createElement('div', container)
+                            userContainer.classList.add('midwrap')
+                            //const middleDiv=createElement('div','middle',userContainer)
+                            userContainer.innerHTML = getUserInfo(post)
+                            const seeMoreBtn = createBtn('see more', userContainer)
+                            seeMoreBtn.onclick = () => document.location = `./post-details.html?postId=${JSON.stringify(post)}`
+                        }
+                        postCurrentUserBtn.disabled = true;
+                    })
+            })
+        })
+
+</script>
+</body>
+</html>
